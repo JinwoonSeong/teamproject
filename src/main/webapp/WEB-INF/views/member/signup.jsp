@@ -15,26 +15,84 @@
     <% } else if (request.getAttribute("signupFailure") != null) { %>
         <p style="color: red;">회원가입 실패!</p>
     <% } %>
-    <form action="${pageContext.request.contextPath}/signup" method="post">
+    <form action="${pageContext.request.contextPath}/signup" method="post" onsubmit="return validateForm()">
         <div class="form-group">
-            <label for="id">아이디</label>
-            <input type="text" id="id" name="id" required>
-        </div>
+    		<label for="id">아이디</label>
+    		<input type="text" id="id" name="id" required pattern="[a-zA-Z0-9]+" title="아이디는 영문자와 숫자로만 입력해주세요.">
+    		<button type="button" onclick="checkDuplicate()">중복 체크</button>
+		</div>
         <div class="form-group">
             <label for="password">패스워드</label>
-            <input type="text" id="password" name="password" required>
+            <input type="password" id="password" name="password" required pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" title="비밀번호는 영문자, 숫자, 특수 문자의 조합으로 8글자에서 15글자로 입력해주세요.">
         </div>
         <div class="form-group">
             <label for="name">이름</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" required pattern="[가-힣]+" title="이름은 한글로만 입력해주세요.">
         </div>
         <div class="form-group">
             <label for="phone">연락처</label>
-            <input type="text" id="phone" name="phone" required>
+            <input type="text" id="phone" name="phone" required pattern="010-\d{4}-\d{4}" title="연락처는 010-숫자4자리-숫자4자리 형식으로 입력해주세요.">
         </div>
         <button type="submit">가입하기</button>
     </form>
 </div>
 
-</body>
-</html>
+<script>
+    function validatePassword() {
+        var passwordInput = document.getElementById("password");
+        var password = passwordInput.value;
+        var passwordRegex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$/;
+
+        if (!passwordRegex.test(password)) {
+            alert("비밀번호는 영문자, 숫자, 특수 문자의 조합으로 8글자에서 15글자로 입력해주세요.");
+            passwordInput.value = "";
+            passwordInput.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function validateId() {
+        var idInput = document.getElementById("id");
+        var id = idInput.value;
+        var idRegex = /^[a-zA-Z0-9]+$/;
+
+        if (!idRegex.test(id)) {
+            alert("아이디는 영문자와 숫자로만 입력해주세요.");
+            idInput.value = "";
+            idInput.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function validateName() {
+        var nameInput = document.getElementById("name");
+        var name = nameInput.value;
+        var nameRegex = /[가-힣]+/;
+
+        if (!nameRegex.test(name)) {
+            alert("이름은 한글로만 입력해주세요.");
+            nameInput.value = "";
+            nameInput.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function validatePhone() {
+        var phoneInput = document.getElementById("phone");
+        var phone = phoneInput.value;
+        var phoneRegex = /^010-\d{4}-\d{4}$/;
+
+        if (!phoneRegex.test(phone)) {
+            alert("유효하지 않은 번호입니다.");
+            phoneInput.value = "";
+            phoneInput.focus();
+            return false;
+        }
+        return true;
+    }
+
+    function validateForm() {
+        return validateId() && validateName() && validatePassword() && validatePhone

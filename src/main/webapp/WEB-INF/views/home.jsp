@@ -81,7 +81,7 @@
                         <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                         <h2 class="h4 fw-bolder">계좌 개설</h2>
                         <p>JW은행과 동행해보세요!</p>
-                        <a class="text-decoration-none" href="createaccount.jsp">
+                        <a class="text-decoration-none" href="${ pageContext.request.contextPath }/accountRegister">
                             계좌 개설 하러가기!!
                             <i class="bi bi-arrow-right"></i>
                         </a>

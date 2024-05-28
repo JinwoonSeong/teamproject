@@ -14,5 +14,5 @@
 	<insert id="signUp" parameterType="memberVO">
 		INSERT INTO t_member(id, password, name, phone)
 		VALUES (#{id}, #{password}, #{name}, #{phone})
-	</insert>	
+	</insert>
 </mapper>
