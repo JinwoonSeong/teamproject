@@ -8,8 +8,8 @@
     	  destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="username" value="c##hr" />
-		<property name="password" value="hr" />    	  
+		<property name="username" value="c##gyuyeong" />
+		<property name="password" value="gyuyeong" />    	  
     </bean>	
     
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

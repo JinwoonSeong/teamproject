@@ -48,10 +48,3 @@ public class MemberController2 {
 		return "redirect:/";
 	}
 }
-
-
-
-
-
-
-

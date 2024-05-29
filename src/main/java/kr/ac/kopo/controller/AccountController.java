@@ -37,6 +37,9 @@ public class AccountController {
     public String accountRegister(@ModelAttribute AccountVO account, Model model) {
         try {
             AccountVO accountRegisterVO = accountService.accountRegister(account);
+            System.out.println(account);
+            String customerId = account.getCustomer_id();
+            System.out.println(customerId);
             if (accountRegisterVO != null) {
                 model.addAttribute("registerSuccess", true);
             } else {
@@ -46,6 +49,6 @@ public class AccountController {
             e.printStackTrace();
             model.addAttribute("registerFailure", true);
         }
-        return "account/accountRegister";
+        return "redirect:/";
     }
 }

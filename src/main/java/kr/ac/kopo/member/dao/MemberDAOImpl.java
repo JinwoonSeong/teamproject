@@ -15,6 +15,7 @@ public class MemberDAOImpl implements MemberDAO {
     
     @Override
     public MemberVO login(MemberVO member) throws Exception {
+    	System.out.println(member);
         MemberVO loginVO = sqlSession.selectOne("dao.MemberDAO.login", member);
         return loginVO;
     }
@@ -23,6 +24,7 @@ public class MemberDAOImpl implements MemberDAO {
     public void signUp(MemberVO member) throws Exception {
         sqlSession.insert("dao.MemberDAO.signUp", member);
     }
+    
     @Transactional
 	public int update_mypage(MemberVO member) throws Exception{
 		return sqlSession.update("member.update_mypage", member);

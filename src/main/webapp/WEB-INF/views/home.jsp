@@ -110,5 +110,18 @@
         <footer class="py-5 bg-dark">
             <div class="container px-5"><p class="m-0 text-center text-white">&copy; 2024 Bank. All rights reserved.</p></div>
         </footer>
+         <table>
+        <tr>
+            <!-- Existing table content -->
+            <td align="right">
+                <c:if test="${not empty userVO}">
+                    [${userVO.customer_id} 님으로 로그인중....]
+                </c:if>
+                <c:if test="${empty userVO}">
+                    [로그인이 필요합니다.]
+                </c:if>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

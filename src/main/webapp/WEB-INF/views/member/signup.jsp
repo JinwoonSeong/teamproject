@@ -17,22 +17,31 @@
     <% } %>
     <form action="${pageContext.request.contextPath}/signup" method="post" onsubmit="return validateForm()">
         <div class="form-group">
-    		<label for="id">아이디</label>
-    		<input type="text" id="id" name="id" required pattern="[a-zA-Z0-9]+" title="아이디는 영문자와 숫자로만 입력해주세요.">
-    		<button type="button" onclick="checkDuplicate()">중복 체크</button>
-		</div>
+            <label for="customer_id">아이디</label>
+            <input type="text" id="customer_id" name="customer_id" required pattern="[a-zA-Z0-9]+" title="아이디는 영문자와 숫자로만 입력해주세요.">
+            <button type="button" onclick="checkDuplicate()">중복 체크</button>
+        </div>
         <div class="form-group">
             <label for="password">패스워드</label>
             <input type="password" id="password" name="password" required pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" title="비밀번호는 영문자, 숫자, 특수 문자의 조합으로 8글자에서 15글자로 입력해주세요.">
         </div>
         <div class="form-group">
             <label for="name">이름</label>
-            <input type="text" id="name" name="name" required pattern="[가-힣]+" title="이름은 한글로만 입력해주세요.">
+            <input type="text" id="customer_name" name="customer_name" required pattern="[가-힣]+" title="이름은 한글로만 입력해주세요.">
         </div>
         <div class="form-group">
             <label for="phone">연락처</label>
-            <input type="text" id="phone" name="phone" required pattern="010-\d{4}-\d{4}" title="연락처는 010-숫자4자리-숫자4자리 형식으로 입력해주세요.">
+            <input type="text" id="phone_number" name="phone_number" required pattern="010-\d{4}-\d{4}" title="연락처는 010-숫자4자리-숫자4자리 형식으로 입력해주세요.">
         </div>
+        <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+		<div class="form-group">
+   		 	<label for="address">주소</label>
+    		<input type="text" id="address" name="address" pattern=".*\S.*">
+		</div>
+		
         <button type="submit">가입하기</button>
     </form>
 </div>
@@ -69,7 +78,7 @@
     function validateName() {
         var nameInput = document.getElementById("name");
         var name = nameInput.value;
-        var nameRegex = /[가-힣]+/;
+        var nameRegex = /^[가-힣]+$/;
 
         if (!nameRegex.test(name)) {
             alert("이름은 한글로만 입력해주세요.");
@@ -94,5 +103,20 @@
         return true;
     }
 
+    function validateEmail() {
+        var emailInput = document.getElementById("email");
+        var email = emailInput.value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+            alert("유효한 이메일 주소를 입력하세요.");
+            emailInput.value = "";
+            emailInput.focus();
+            return false;
+        }
+        return true;
+    }
+
     function validateForm() {
-        return validateId() && validateName() && validatePassword() && validatePhone
+        return validateId() && validatePassword() && validateName() && validatePhone() && validateEmail();
+    }

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
@@ -19,8 +20,9 @@ public class MemberController {
 	private MemberService memberService;
 	
 	@GetMapping("/login")
-	public String loginForm() {
-	
+	public String loginForm(Model model) {
+		MemberVO member = new MemberVO();
+		model.addAttribute("M", member);
 		return "member/login";
 	}
 	
@@ -33,8 +35,8 @@ public class MemberController {
 	 *
 	 */
 	@PostMapping("/login")
-	public String login(MemberVO member, Model model) throws Exception {
-		
+	public String login(@ModelAttribute("M") MemberVO member, Model model) throws Exception {
+		System.out.println(member);
 		MemberVO loginVO = memberService.login(member);
 		if(loginVO == null) {
 			// 로그인 실패

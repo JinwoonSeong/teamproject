@@ -1,89 +1,66 @@
 package kr.ac.kopo.member.vo;
-/*
-
-	CREATE TABLE t_member(
-		id varchar2(50) PRIMARY KEY
-		, password varchar2(256) NOT NULL
-		, name varchar2(100) NOT NULL
-		, phone varchar2(15) 
-		, TYPE char(1) DEFAULT 'U'
-	)	
-
- */
-
-/*
- 	1. 모든 멤버변수는 private 접근제한자 설정
- 	2. 기본생성자 필수
- 	3. getter/setter 메소드
- */
 
 public class MemberVO {
-	private String id;
-	private String password;
-	private String name;
-	private String phone;
-	private String type;
-	
+    private String customer_id;
+    private String password;
+    private String customer_name;
+    private String phone_number;
+    private String email;
+    private String type;
+    private String address;
 	public MemberVO() {
-	}
-
-	public MemberVO(String id, String password, String name, String phone, String type) {
 		super();
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.phone = phone;
-		this.type = type;
+		// TODO Auto-generated constructor stub
 	}
-
-	public String getId() {
-		return id;
+	@Override
+	public String toString() {
+		return "MemberVO [customer_id=" + customer_id + ", password=" + password + ", customer_name=" + customer_name
+				+ ", phone_number=" + phone_number + ", email=" + email + ", type=" + type + ", address=" + address
+				+ "]";
 	}
-
-	public void setId(String id) {
-		this.id = id;
+	public String getCustomer_id() {
+		return customer_id;
 	}
-
+	public void setCustomer_id(String customer_id) {
+		this.customer_id = customer_id;
+	}
 	public String getPassword() {
 		return password;
 	}
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public String getName() {
-		return name;
+	public String getCustomer_name() {
+		return customer_name;
 	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
 	}
-
-	public String getPhone() {
-		return phone;
+	public String getPhone_number() {
+		return phone_number;
 	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhone_number(String phone_number) {
+		this.phone_number = phone_number;
 	}
-
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getType() {
 		return type;
 	}
-
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	@Override
-	public String toString() {
-		return "MemberVO [id=" + id + ", password=" + password + ", name=" + name + ", phone=" + phone + ", type="
-				+ type + "]";
+	public String getAddress() {
+		return address;
 	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+    
 
-	
+    
 }
-
-
-

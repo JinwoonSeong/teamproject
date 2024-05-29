@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix = "form" uri = "http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,12 +11,12 @@
 <script>
 	let checkForm = function() {
 		let f = document.loginForm
-		let id = f.id
+		let customer_id = f.customer_id
 		let password = f.password
 		
-		if(id.value === '') {
+		if(customer_id.value === '') {
 			alert('ID를 입력해주세요')
-			id.focus()
+			customer_id.focus()
 			return false
 		}
 		
@@ -39,20 +40,20 @@
 		<h2>로그인</h2>
 		<hr>
 		<br>
-		<form method="post" onsubmit="return checkForm()" name="loginForm">
+		<form:form modelAttribute="M" method="post" onsubmit="return checkForm()" name="loginForm">
 			<table border="1">
 				<tr>
-					<th>ID</th>
-					<td><input type="text" name="id"></td>
+					<th>아이디</th>
+					<td><form:input type="text" name="customer_id" path="customer_id"/></td>
 				</tr>
 				<tr>
-					<th>PASSWORD</th>
-					<td><input type="password" name="password"></td>
+					<th>비밀번호</th>
+					<td><form:input type="password" name="password" path="password"/></td>
 				</tr>
 			</table>
 			<br>
 			<input type="submit" value="로그인">
-		</form>
+		</form:form>
 	</div>
 	</section>
 	<footer>
@@ -60,11 +61,3 @@
 	</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-

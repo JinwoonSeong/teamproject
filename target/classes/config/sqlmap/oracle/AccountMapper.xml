@@ -5,7 +5,7 @@
 <mapper namespace="dao.AccountDAO">
     <!-- 계좌 등록 -->
     <insert id="accountRegister" parameterType="kr.ac.kopo.account.vo.AccountVO">
-        INSERT INTO ACCOUNT (account_num, customer_id, name, account_password, account_money, open_date, bank_code)
-        VALUES (#{account_num}, #{customer_id}, #{name}, #{account_password}, #{account_money}, #{open_date}, #{bank_code})
+        INSERT INTO ACCOUNT (account_num, customer_id, name, account_password)
+        VALUES (#{account_num}, #{customer_id}, #{name}, #{account_password})
     </insert>
 </mapper>
