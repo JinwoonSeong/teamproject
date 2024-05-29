@@ -44,7 +44,7 @@
         </div>
         <div>
             <label for="account_password">계좌 비밀번호:</label> 
-			<input type="number" id="account_password" name="account_password" required pattern="[0-9]{6}" title="숫자 6자리로 입력해주세요."> [6자리 숫자]
+			<input type="password" id="account_password" name="account_password" required pattern="[0-9]{6}" title="숫자 6자리로 입력해주세요."> [6자리 숫자]
         </div>
         <button type="submit">등록</button>
     </form>

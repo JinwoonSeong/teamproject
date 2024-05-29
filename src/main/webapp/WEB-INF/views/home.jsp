@@ -25,7 +25,7 @@
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">메인페이지</a></li>
                         <li class="nav-item"><a class="nav-link" href="${ pageContext.request.contextPath }/mypage">마이페이지</a></li>
-                        <li class="nav-item"><a class="nav-link" href="myaccount.jsp">내 계좌</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${ pageContext.request.contextPath }/myaccount">내 계좌</a></li>
                         <li class="nav-item"><a class="nav-link" href="account.jsp">계좌 개설</a></li>
                         <li class="nav-item"><a class="nav-link" href="savings.jsp">적금</a></li>
                         <li class="nav-item"><a class="nav-link" href="loans.jsp">대출</a></li>
@@ -70,10 +70,10 @@
                     </div>
                 	<div class="col-lg-4 mb-5 mb-lg-0">
                         <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-star"></i></div>
-                        <h2 class="h4 fw-bolder">내 계좌</h2>
-                        <p>고객님 어서오세요!</p>
-                        <a class="text-decoration-none" href="myaccount.jsp">
-                            내 계좌 확인하러 가기!
+                        <h2 class="h4 fw-bolder">계좌이체</h2>
+                        <p>계좌이체하기</p>
+                        <a class="text-decoration-none" href="${ pageContext.request.contextPath }/transfer">
+                            빠른 계좌이체
                             <i class="bi bi-arrow-right"></i>
                         </a>
                     </div>

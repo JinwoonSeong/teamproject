@@ -8,7 +8,7 @@ import kr.ac.kopo.account.vo.AccountVO;
 
 @Repository
 public class AccountDAOImpl implements AccountDAO {
-
+	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
@@ -17,4 +17,5 @@ public class AccountDAOImpl implements AccountDAO {
 		 sqlSession.insert("dao.AccountDAO.accountRegister", account);
 		
 	}
+
 }
