@@ -19,12 +19,12 @@
     <h2>계좌 이체</h2>
     
     <%-- 계좌 이체 양식 --%>
-    <form action="${pageContext.request.contextPath}/transfer" method="post">
+    <form action="${pageContext.request.contextPath}/transfer" method="post" enctype="application/x-www-form-urlencoded">
         <label for="fromAccount">보내는 계좌:</label>
-        <input type="text" id="accountNum" name="fromAccount" required><br><br>
+        <input type="text" id="from_Account" name="from_Account" required><br><br>
         
         <label for="toAccount">받는 계좌:</label>
-        <input type="text" id="accountNum" name="toAccount" required><br><br>
+        <input type="text" id="to_Account" name="to_Account" required><br><br>
         
         <label for="amount">이체 금액:</label>
         <input type="number" id="amount" name="amount" required><br><br>

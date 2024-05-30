@@ -9,7 +9,7 @@ import kr.ac.kopo.transaction.vo.TransactionVO;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
-	
+
     @Autowired
     private TransactionDAO transactionDao;
 
@@ -17,14 +17,11 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void transfer(TransactionVO transaction) {
         try {
-			transactionDao.decreaseBalance(transaction);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-        try {
-			transactionDao.increaseBalance(transaction);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+            transactionDao.decreaseBalance(transaction);
+            transactionDao.increaseBalance(transaction);
+        } catch (Exception e) {
+            // 예외 발생 시 전체 트랜잭션을 롤백
+            throw new RuntimeException("계좌 이체 중 오류 발생: " + e.getMessage(), e);
+        }
     }
 }

@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import kr.ac.kopo.transaction.service.TransactionService;
 import kr.ac.kopo.transaction.vo.TransactionVO;
 
@@ -19,7 +19,7 @@ public class TransactionController {
     }
     
     @PostMapping("/transfer")
-    public String transfer(@RequestBody TransactionVO transaction) {
+    public String transfer(@ModelAttribute TransactionVO transaction) throws Exception {
         transactionService.transfer(transaction);
         return "redirect:/";
     }
